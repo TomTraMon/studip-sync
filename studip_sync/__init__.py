@@ -10,8 +10,9 @@ __author__ = __maintainer__ = "lenke182"
 
 def _get_config_path():
     import os
-    prefix = os.environ.get("XDG_CONFIG_HOME") or "~/.config"
-    path = os.path.join(prefix, "studip-sync/")
+    """prefix = os.environ.get("XDG_CONFIG_HOME") or "~/.config"
+    path = os.path.join(prefix, "studip-sync/")"""
+    path = os.path.join(os.getcwd(), "config")
     return os.path.expanduser(path)
 
 

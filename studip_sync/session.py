@@ -40,7 +40,7 @@ class URL(object):
         return urllib.parse.urljoin(self.base_url, rel_url)
 
     def login_page(self):
-        return self.__relative_url("")
+        return self.__relative_url("index.php?again=yes")
 
     def files_main(self):
         return self.__relative_url("dispatch.php/course/files")
@@ -160,7 +160,7 @@ class Session(object):
 
     def download_file_api(self, file_id, tempfile):
         download_url = self.url.files_api_download(file_id)
-        
+
         with self.session.get(download_url, stream=True) as response:
             if not response.ok:
                 print(response.text)
@@ -200,7 +200,7 @@ class Session(object):
                 raise DownloadError("Cannot access course files/files_index page")
 
             res = json.loads(response.text)
-            
+
             return res["file_refs"], res["subfolders"]
 
     def download_media(self, course_id, media_workdir, course_save_as):

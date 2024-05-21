@@ -10,10 +10,6 @@ __author__ = __maintainer__ = "lenke182"
 
 def _get_config_path():
     import os
-    if "STUDIP_SYNC_CONFIG_PATH" in os.environ:
-        path = (os.environ["STUDIP_SYNC_CONFIG_PATH"])
-        if os.path.exists(path):
-            return os.path.expanduser(path)
     prefix = os.environ.get("XDG_CONFIG_HOME") or "~/.config"
     path = os.path.join(prefix, "studip-sync/")
     return os.path.expanduser(path)
